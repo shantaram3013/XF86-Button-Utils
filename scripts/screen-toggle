@@ -1,9 +1,12 @@
 #!/bin/bash
 
-if (( "$(printf %0.f "$(xbacklight)")" > 0 )); then
-	xbacklight > ~/.config/scrn_tog_brightness
+cfg=${XDG_CONFIG_HOME:-"$HOME"/.config}
+level=$(xbacklight)
+
+if (( "${level%%.*}" )); then
+	xbacklight > "$cfg/scrn_tog_brightness"
 	xbacklight -set 0
 else
-	xbacklight -set "$(cat ~/.config/scrn_tog_brightness)"
-	xbacklight > ~/.config/scrn_tog_brightness
+	xbacklight -set "$(< $cfg/scrn_tog_brightness)"
+	printf %s "$level" > "$cfg/scrn_tog_brightness"
 fi

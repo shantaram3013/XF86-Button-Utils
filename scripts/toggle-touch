@@ -36,7 +36,7 @@ remappable_devices=("$touch_device_name" "$wacom_stylus" "$wacom_eraser")
 notification_sender='ThinkVantage Button Listener'
 
 # Add more elifs to this ladder if you have more displays than 2 / rearrange it to change the order it cycles in.
-if [[ $touch_state == $int_display ]]; then # Mappped to internal display, touch enabled.
+if [[ $touch_state == "$int_display" ]]; then # Mappped to internal display, touch enabled.
     touch_state="OFF" # Disable touch.
 elif [[ $touch_state == "$ext_monitor" ]]; then # Mapped to external display.
     touch_state="$int_display" # Remap to internal display.

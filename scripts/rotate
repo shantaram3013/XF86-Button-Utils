@@ -1,17 +1,17 @@
 #!/bin/bash
 
-ROTATION=$(cat ~/.config/rotation)
+rotation=$(cat ~/.config/rotation)
 
-if [[ $ROTATION == 'normal' ]]; then
-    ROTATION='right'
-elif [[ $ROTATION == 'right' ]]; then
-    ROTATION='flip'
-elif [[ $ROTATION == 'flip' ]]; then
-    ROTATION='left'
+if [[ $rotation == 'normal' ]]; then
+    rotation='right'
+elif [[ $rotation == 'right' ]]; then
+    rotation='flip'
+elif [[ $rotation == 'flip' ]]; then
+    rotation='left'
 else
-    ROTATION='normal'
+    rotation='normal'
 fi
 
-thinkpad-rotate "$ROTATION"
+thinkpad-rotate "$rotation"
 
-echo "$ROTATION" > ~/.config/rotation
+echo "$rotation" > ~/.config/rotation
