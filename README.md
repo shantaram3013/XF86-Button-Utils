@@ -15,7 +15,7 @@ These could be in your distro repos, be sure to check those before building from
 `xrandr`: (needed for toggle_mm) https://gitlab.freedesktop.org/xorg/app/xrandr  
 `pamixer`: https://github.com/cdemoulins/pamixer  
 A polkit agent: Needed for toggling the webcam, which uses modprobe to add and remove the uvcvideo module.  
-`notify-send` and a notification daemon: Almost all the scripts send notifications to alert of changes taking place on your system. `notify-send` is used for this.  
+`notify-send` and a notification daemon such as `dunst`: Almost all the scripts send notifications to alert of changes taking place on your system. `notify-send` is used for this.  
 `playerctl`: For audio commands.  
 
 ### USAGE
