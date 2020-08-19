@@ -1,0 +1,9 @@
+#!/bin/bash
+
+if (( "$(printf %0.f "$(xbacklight)")" > 0 )); then
+	xbacklight > ~/.config/scrn_tog_brightness
+	xbacklight -set 0
+else
+	xbacklight -set "$(cat ~/.config/scrn_tog_brightness)"
+	xbacklight > ~/.config/scrn_tog_brightness
+fi

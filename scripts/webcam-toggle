@@ -1,0 +1,15 @@
+#!/bin/bash
+
+status="$(lsmod | grep uvcvideo)"
+notifier_username='user' # Your username here
+notifier_uid='1000' # Your uid here
+
+if [ -z "$status" ]; then
+	modprobe uvcvideo
+	sudo -u $notifier_username DISPLAY=:0 DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/$notifier_uid/bus" notify-send -a "Webcam Button" "Webcam enabled."
+else
+	modprobe -r uvcvideo
+	message="Disabled"
+	sudo -u $notifier_username DISPLAY=:0 DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/$notifier_uid/bus" notify-send -a "Webcam Button" "Webcam disabled."
+fi
+exit

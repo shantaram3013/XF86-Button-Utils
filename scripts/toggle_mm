@@ -1,0 +1,5 @@
+if xrandr | grep -q "VGA1 connected"; then
+    xrandr --output VGA1 --mode 1366x768 --output LVDS1 --mode 1366x768 --right-of VGA1
+else
+    xrandr --auto
+fi    

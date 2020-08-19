@@ -1,0 +1,3 @@
+#!/bin/bash
+
+xmessage "Sorry, the battery-saver script is still WIP."
