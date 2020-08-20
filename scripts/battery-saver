@@ -1,3 +1,41 @@
 #!/bin/bash
 
-xmessage "Sorry, the battery-saver script is still WIP."
+cfg=${XDG_CONFIG_HOME:-"$HOME"/.config}
+
+lower_limit='800M'
+
+perf1_upper_limit='3G'
+perf1_brightness='20'
+perf1_governor='performance'
+
+perf2_upper_limit='2G'
+perf2_brightness='10'
+perf2_governor='performance'
+
+ps_upper_limit='2G'
+ps_brightness='5'
+ps_governor='powersave'
+
+profile="$(< "$cfg/bat-profile")"
+
+if [[ $profile == "perf1" ]]; then
+    # set profile perf2
+    profile='perf2'
+    pkexec cpupower frequency-set -d $lower_limit -u $perf2_upper_limit -g $perf2_governor
+    xbacklight -set $perf2_brightness
+    notify-send -a "Power Settings" "Performance Profile 2 applied." "Clock speed range set between "$lower_limit"Hz and "$perf2_upper_limit"Hz. CPU governor set to "$perf2_governor.""
+elif [[ $profile == "perf2" ]]; then
+    # set profile ps (Power Save)
+    profile='ps'
+    pkexec cpupower frequency-set -d $lower_limit -u $ps_upper_limit -g $ps_governor
+    xbacklight -set $ps_brightness
+    notify-send -a "Power Settings" "Powersaving Profile applied." "Clock speed range set between "$lower_limit"Hz and "$ps_upper_limit"Hz. CPU governor set to "$ps_governor"."
+else
+    # set profile perf1
+    profile='perf1'
+    pkexec cpupower frequency-set -d $lower_limit -u $perf1_upper_limit -g $perf1_governor
+    xbacklight -set $perf1_brightness
+    notify-send -a "Power Settings" "Performance Profile 1 applied." "Clock speed range set between "$lower_limit"Hz and "$perf1_upper_limit"Hz. CPU governor set to "$perf1_governor"."
+fi
+
+echo $profile > "$cfg"/bat-profile

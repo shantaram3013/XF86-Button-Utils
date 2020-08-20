@@ -25,7 +25,7 @@ Make sure to set the `$notifier_username` and `$notifier_uid` in webcam-toggle c
 ```
 {
     "XF86ScreenSaver":       SCRIPT_PATH + "/corrupterlck", // screen locker that uses ImageMagick, corrupter, and i3lock to set a "corrupted" screenshot as the background for i3lock
-    "XF86Battery":           SCRIPT_PATH + "/scripts/battery-saver", // WIP script to toggle powersave settings.
+    "XF86Battery":           SCRIPT_PATH + "/scripts/battery-saver", // Script to toggle CPU clock speeds and brightness levels.
     "XF86WLAN":              SCRIPT_PATH + "/scripts/wifi-toggle", // Toggles WiFi using nmcli
     "XF86Display":           SCRIPT_PATH + "/scripts/screen-toggle", // Uses xbacklight to toggle brightness between 0 and the current brightness.
     "XF86TouchpadToggle":    SCRIPT_PATH + "/scripts/touchpad-toggle", // Toggles the touchpad. Useful on machines that feature an alternate pointing device.
