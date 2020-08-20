@@ -43,3 +43,4 @@ Make sure to set the `$notifier_username` and `$notifier_uid` in webcam-toggle c
     "XF86AudioNext":         "playerctl next"
 }
 ```
+Looking for a volume script? See https://github.com/shantaram3013/volume!
