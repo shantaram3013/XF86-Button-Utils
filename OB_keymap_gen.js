@@ -20,5 +20,5 @@ let actions = {
 }
 
 for (test of Object.keys(actions)) {
-    console.log(`    <keybind key="${test}">\n      <action name="Execute">\n        <command> ${actions[test]} </command>\n      </action>\n    </keybind>\n`); # for openbox rc.xml
+    console.log(`    <keybind key="${test}">\n      <action name="Execute">\n        <command> ${actions[test]} </command>\n      </action>\n    </keybind>\n`); // for openbox rc.xml
 }
